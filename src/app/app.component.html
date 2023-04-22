@@ -44,12 +44,17 @@
             >Please enter a valid email</span
           >
         </div>
-        <div class="radio" *ngFor="let status of allStatus">
-          <label>
-            <input type="radio" formControlName="status" [value]="status" />{{
-              status
-            }}
-          </label>
+        <div class="form-group">
+          <label for="status"> Project status </label>
+          <Select
+            id="status"
+            formControlNam="projectStatus"
+            class="form-control"
+          >
+            <option value="stable">Stable</option>
+            <option value="critical">Critical</option>
+            <option value="finished">Finished</option>
+          </Select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

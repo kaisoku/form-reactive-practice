@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   signupForm: FormGroup;
-  allStatus = ['Stable', 'Critical', 'Finished'];
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -22,13 +21,13 @@ export class AppComponent implements OnInit {
         this.asyncForbidenProjectName
       ),
       email: new FormControl(null, [Validators.required, Validators.email]),
-      status: new FormControl('Stable'),
+      projectStatus: new FormControl('stable'),
     });
   }
 
   onSubmit() {
     console.log(this.signupForm);
-    this.signupForm.reset();
+    //this.signupForm.reset();
   }
 
   forbiddenProjectName(control: FormControl): { [s: string]: boolean } {
