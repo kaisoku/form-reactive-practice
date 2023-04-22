@@ -14,10 +14,7 @@ export class AppComponent implements OnInit {
     this.signupForm = new FormGroup({
       projectName: new FormControl(
         null,
-        [
-          Validators.required,
-          //this.forbiddenProjectName,
-        ],
+        [Validators.required, this.forbiddenProjectName.bind(this)],
         this.asyncForbidenProjectName
       ),
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -41,7 +38,7 @@ export class AppComponent implements OnInit {
     control: FormControl
   ): Promise<any> | Observable<any> {
     return new Promise((resolve, reject) => {
-      if (control.value === 'Test') {
+      if (control.value === 'TestProject') {
         resolve({ projectNameForbidden: true });
       } else {
         resolve(null);
